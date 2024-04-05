@@ -1,12 +1,8 @@
 import { useState, useEffect } from 'react'
-import { createClient } from '@supabase/supabase-js'
 import { FcGoogle } from "react-icons/fc";
+import { supabase } from '../../components/supabaseClient'
 import './login.css'
 
-const supabase = createClient(
-    "https://uauainidbpansqtbflwz.supabase.co",
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVhdWFpbmlkYnBhbnNxdGJmbHd6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTIzMDc0MDYsImV4cCI6MjAyNzg4MzQwNn0.zKvZkMNYYV45TLFeD4QcjiQlXjWHXvv2jOVESBIWk5E'
-)
 
 
 export default function Login() {
@@ -15,6 +11,7 @@ export default function Login() {
     useEffect(() => {
       supabase.auth.getSession().then(({ data: { session } }) => {
         setSession(session)
+        console.log(session)
       })
       console.log(session)
       const {
