@@ -9,10 +9,27 @@ const NewUser = () => {
         }
     )
     const [session,setSession] = useState();
+    const [check,setCheck] = useState(false)
+
     useEffect(() => {
         supabase.auth.onAuthStateChange((_event, session) => {
             console.log(session)
+            setSession(session)
+
+            supabase.from('users').select('setup_check').eq('id',session.user.id).then(({data,error})=>{
+                if(error){
+                    console.log(error)
+                }else{
+                    console.log(data)
+                    if(data[0].setup_check){
+                        setCheck(true)
+                }
+            }
+        }
+        )
         })
+
+
     }, [])
 
 
@@ -21,23 +38,23 @@ const NewUser = () => {
    const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData)
-    supabase.auth.update({
-        data: {
-            name: formData.Name,
-            address: formData.address,
-            phone: formData.pno
+    supabase.from('users').update({
+        name:formData.Name,
+        address:formData.address,
+        phone_no:formData.pno,
+        setup_check:true
+
+    }).eq('id',session.user.id).then(({data,error})=>{
+        if(error){
+            console.log(error)
+        }else{
+            console.log(data)
+            alert("Updated")
         }
-    }).then((data) => {
-        console.log(data)
-        alert('Profile Updated')
-    }).catch((error) => {
-        console.log(error)
     })
-
-
 }
-  return (
-    <section className='bg-white w-screen h-screen overflow-hidden'>
+
+    const askDetails = (
         <form className='flex flex-col w-full h-full p-4 border-2 items-center text-center justify-center border-slate-900 gap-4'
             onSubmit={handleSubmit}
         >
@@ -79,6 +96,10 @@ const NewUser = () => {
             </label>
             <button type='submit' className='w-3/6 py-2 rounded-lg bg-slate-500/[.2] text-slate-700' >SUBMIT</button>
         </form>
+    )
+  return (
+    <section className='bg-white w-screen h-screen overflow-hidden'>
+        {askDetails}
     </section>
   )
 }
