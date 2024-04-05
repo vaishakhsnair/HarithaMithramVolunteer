@@ -4,6 +4,7 @@ import UserProfile from '../User/UserProfile';
 import NewUser from '../User/NewUser';
 
 import '../../components/background.css'
+import CreatePost from '../Posts/CreatePost';
 
 
 
@@ -66,7 +67,7 @@ export default function Home() {
 
 
     return (
-      existingUser ? 
+      !isLoggedIn ? 
       (
       <div className='relative min-w-screen min-h-screen max-h-screen flex-col '>
            <div className='absolute w-full h-screen border-2 border-green-400 '>
@@ -82,7 +83,7 @@ export default function Home() {
           </div>        
         </div>
       )
-       : <NewUser />
+       : <CreatePost />
 
     )
 }

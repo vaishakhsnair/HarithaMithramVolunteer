@@ -17,8 +17,6 @@ const NewUser = () => {
     }, [])
 
 
-
-    
    const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData)
