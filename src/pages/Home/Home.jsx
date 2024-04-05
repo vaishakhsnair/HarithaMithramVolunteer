@@ -1,17 +1,16 @@
 import { supabase } from '../../components/supabaseClient'
 import { useState, useEffect } from 'react'
-import LangaugeSelect from '../Language/page';
 import UserProfile from '../User/UserProfile';
+import NewUser from '../User/NewUser';
 
 
 export default function Home() {
-    const isLoggedIn = false;
+    const isLoggedIn = true;
     const [session, setSession] = useState(null)
 
     useEffect(() => {
       supabase.auth.getSession().then(({ data: { session } }) => {
         setSession(session)
-        console.log(session)
       })
   
       const {
@@ -27,7 +26,7 @@ export default function Home() {
       <>
       {isLoggedIn? (
       <div>
-        <UserProfile />
+        <NewUser  />
       </div>):(<>
         <div className='flex flex-col items-center justify-center min-w-screen min-h-screen 
                         bg-image bg-no-repeat bg-cover 
@@ -37,7 +36,7 @@ export default function Home() {
                         text-xl cursor-pointer  '>
                 <button type='button' onClick={async ()=>{
                     const { error } = await supabase.auth.signOut();
-                    console.log(error)
+                    console.log(error+"\nSign In")
                 }} >LogOut</button>
       </div>
         </div>
