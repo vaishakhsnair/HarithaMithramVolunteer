@@ -50,32 +50,32 @@ const NewUser = () => {
            </div>
            <BiUserCircle className='w-48 h-48' />
             <label htmlFor='fullname' className='w-full h-auto'>
-                <input type='text' placeholder='Full Name' className='rounded-lg border-2 py-2 w-full ' onChange={
+                <input type='text' placeholder='Full Name' className='rounded-lg border-2 py-2 w-full ps-2 ' onChange={
                     (e)=>{
                         setFormData({...formData,Name:e.target.value})
                     }
                 } value={formData.Name}   required></input>
             </label>
             <label htmlFor='address' className='w-full h-auto'>
-                <input type='text' placeholder='Address' className='rounded-lg border-2 py-2 w-full ' onChange={
+                <input type='text' placeholder='Address' className='rounded-lg border-2 py-2 w-full ps-2 ' onChange={
                     (e)=>{
                         setFormData({...formData,address:e.target.value})
                     }
                 } value={formData.address} required></input>
             </label>
             <label htmlFor='email' className='w-full h-auto'>
-                <input type='email' placeholder='Email' className='rounded-lg border-2 py-2 w-full ' onChange={
+                <input type='email' placeholder='Email' className='rounded-lg border-2 py-2 w-full ps-2 ' onChange={
                     (e)=>{
                         setFormData({...formData,email:e.target.value})
                     }
                 } value={formData.email} required></input>
             </label>
             <label htmlFor='phone' className='w-full h-auto'>
-                <input type='text' placeholder='Phone number' className='rounded-lg border-2 py-2 w-full ' minLength={10} onChange={
+                <input type='number' placeholder='Phone number' className='rounded-lg border-2 py-2 w-full ps-2 snap-none' minLength={10} onChange={
                     (e)=>{
                         setFormData({...formData,pno:e.target.value})
                     }
-                } value={formData.pno} required></input>
+                } value={formData.pno} required onWheel={(e) => e.preventDefault()}></input>
             </label>
             <button type='submit' className='w-3/6 py-2 rounded-lg bg-slate-500/[.2] text-slate-700' >SUBMIT</button>
         </form>
