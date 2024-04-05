@@ -29,7 +29,7 @@ export default function QrScanner() {
         <div
             className='flex flex-col items-center justify-center min-w-screen min-h-screen 
                          
-                        bg-black border-2 text-center'>
+                        bg-black text-center'>
             <div className='text-white text-4xl font-bold'>Scan Your QR Code</div>
             <Scanner
                 onResult={(text, result) => handleScan(text,result)}
@@ -41,13 +41,13 @@ export default function QrScanner() {
             <div className='flex w-screen items-center justify-center gap-[50%]'>
                 <div className='flex items-center justify-center  self-start ml-8
 
-                            rounded-xl min-h-12 bg-[#34DC59] min-w-20 gap-10 text-center 
+                            rounded-xl min-h-12 min-w-20 gap-10 text-center 
                             text-xl cursor-pointer text-white font-bold  '
                     onClick={() => setEnabled(!enabled)}>
                     {enabled ? <RiCameraFill size={40} color='white' className='m-2' /> : <RiCameraOffFill size={40} color='white' className='m-2' />}
                 </div>
                 <div className='flex items-center justify-center self-end mr-8
-                            rounded-xl min-h-12 bg-[#34DC59] min-w-20 gap-10 text-center 
+                            rounded-xl min-h-12  min-w-20 gap-10 text-center 
                             text-xl cursor-pointer text-white font-bold  '
                     onClick={() => setFlash(!flash)}>
                     {flash ? <MdFlashlightOff size={40} color='white' className='m-2' /> : <MdFlashlightOn size={40} color='white' className='m-2' />}
