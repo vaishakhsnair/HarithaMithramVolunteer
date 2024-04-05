@@ -12,6 +12,7 @@ const NewUser = () => {
     useEffect(() => {
         supabase.auth.onAuthStateChange((_event, session) => {
             console.log(session)
+            setSession(session)
         })
     }, [])
 
@@ -21,15 +22,17 @@ const NewUser = () => {
    const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData)
-    supabase.auth.update({
-        data: {
-            name: formData.Name,
-            address: formData.address,
-            phone: formData.pno
-        }
-    }).then((data) => {
+    supabase.from('users').update({
+        name:formData.Name,
+        address:formData.address,
+        phone_no:formData.pno,
+        setup_check:true
+    }).eq('id',session.user.id)
+    .then((data) => {
         console.log(data)
-        alert('Profile Updated')
+        if(data.status === 204){
+            window.location.href = '/'
+        }
     }).catch((error) => {
         console.log(error)
     })

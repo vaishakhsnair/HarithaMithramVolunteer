@@ -10,16 +10,37 @@ import '../../components/background.css'
 export default function Home() {
     const isLoggedIn = true;
     const [session, setSession] = useState(null)
+    const [existingUser, setExistingUser] = useState(false)
 
     useEffect(() => {
       supabase.auth.getSession().then(({ data: { session } }) => {
         setSession(session)
+
+
       })
   
       const {
         data: { subscription },
       } = supabase.auth.onAuthStateChange((_event, session) => {
         setSession(session)
+        if (session) {
+          supabase
+            .from('users')
+            .select('setup_check')
+            .eq('id', session.user.id)
+            .then(({ data, error }) => {
+              if (error) {
+                console.log(error)
+              } else {
+                if (data.length === 0) {
+                  setExistingUser(false)
+                } else {
+                  console.log(data[0].setup_check)
+                  setExistingUser(data[0].setup_check)
+                }
+              }
+            })
+        }
       })
   
       return () => subscription.unsubscribe()
@@ -43,8 +64,11 @@ export default function Home() {
 
     
 
+
     return (
-        <div className='relative min-w-screen min-h-screen max-h-screen flex-col '>
+      existingUser ? 
+      (
+      <div className='relative min-w-screen min-h-screen max-h-screen flex-col '>
            <div className='absolute w-full h-screen border-2 border-green-400 '>
               <div className='relative'>
                 <div className='bg-circle-dsg'></div>
@@ -57,6 +81,8 @@ export default function Home() {
             <img src='/kswmp.png' className='relative w-screen  z-10'></img>
           </div>        
         </div>
+      )
+       : <NewUser />
 
     )
 }
