@@ -24,7 +24,10 @@ export default function Home() {
   
     return (
       <>
-      {isLoggedIn? (<div><LangaugeSelect /></div>):(<>
+      {isLoggedIn? (
+      <div>
+        <LangaugeSelect />
+      </div>):(<>
         <div className='flex flex-col items-center justify-center min-w-screen min-h-screen 
                         bg-image bg-no-repeat bg-cover 
                         bg-center border-2 text-center'>
