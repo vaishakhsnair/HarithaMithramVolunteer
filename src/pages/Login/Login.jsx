@@ -3,7 +3,7 @@ import { FcGoogle } from "react-icons/fc";
 import { supabase } from '../../components/supabaseClient'
 import './login.css'
 
-
+    
 
 export default function Login() {
     const [session, setSession] = useState(null)
