@@ -7,6 +7,7 @@ import './App.css';
 
 import Login from './pages/Login/Login';
 import Home from './pages/Home/Home';
+import QrScanner from './pages/QrScanner/QrScanner';
 
 function checkExistingUser(user) {
   supabase
@@ -68,6 +69,7 @@ function App() {
     <Router>
     <Routes>
       <Route path="/" element={session ? <Home />: <Login />} />
+      <Route path="/qrscan" element={session ? <QrScanner />: <Login />} />
     </Routes>
   </Router>
   );
