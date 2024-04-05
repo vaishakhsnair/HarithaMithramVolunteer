@@ -7,6 +7,9 @@ import '../../components/background.css'
 import Navbar from '../../components/Navbar';
 import { Link } from 'react-router-dom';
 
+import CreatePost from '../Posts/CreatePost';
+
+
 
 export default function Home() {
   const isLoggedIn = true;
@@ -103,7 +106,9 @@ export default function Home() {
           <Navbar></Navbar>
         </div>
       )
+
       : <NewUser />
+
 
   )
 }
