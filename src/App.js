@@ -7,14 +7,51 @@ import './App.css';
 
 import Login from './pages/Login/Login';
 import Home from './pages/Home/Home';
+import QrScanner from './pages/QrScanner/QrScanner';
+
+
+function checkExistingUser(user) {
+  supabase
+    .from('users')
+    .select('*')
+    .eq('id', user.id)
+    .then(({ data, error }) => {
+      if (error) {
+        console.log(error)
+      } else {
+        if (data.length === 0) {
+          supabase
+            .from('users')
+            .insert([
+              {
+                id: user.id,
+                setup_check : false
+              },
+            ])
+            .then(({ data, error }) => {
+              if (error) {
+                console.log(error)
+
+              } else {
+                console.log(data)
+                console.log("Added Inital User Data")
+              }
+            })
+        }
+      }
+    })
+}
 
 function App() {
   const [session, setSession] = useState(null)
 
+ 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session)
-      console.log(session)
+      if (session) {
+        checkExistingUser(session.user)
+      }
     })
 
     const {
@@ -33,6 +70,7 @@ function App() {
     <Router>
     <Routes>
       <Route path="/" element={session ? <Home />: <Login />} />
+      <Route path="/scanner" element={<QrScanner />} />
     </Routes>
   </Router>
   );
