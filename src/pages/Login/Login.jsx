@@ -3,7 +3,7 @@ import { FcGoogle } from "react-icons/fc";
 import { supabase } from '../../components/supabaseClient'
 import './login.css'
 
-    
+
 
 export default function Login() {
     const [session, setSession] = useState(null)
@@ -11,9 +11,9 @@ export default function Login() {
     useEffect(() => {
       supabase.auth.getSession().then(({ data: { session } }) => {
         setSession(session)
+        console.log('Login Page')
         console.log(session)
       })
-      console.log(session)
       const {
         data: { subscription },
       } = supabase.auth.onAuthStateChange((_event, session) => {
