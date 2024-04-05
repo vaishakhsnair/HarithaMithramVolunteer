@@ -4,7 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 import './login.css'
 
 const supabase = createClient(
-    "https://uauainidbpansqtbflwz.supabase.com",
+    "https://uauainidbpansqtbflwz.supabase.co",
     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVhdWFpbmlkYnBhbnNxdGJmbHd6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTIzMDc0MDYsImV4cCI6MjAyNzg4MzQwNn0.zKvZkMNYYV45TLFeD4QcjiQlXjWHXvv2jOVESBIWk5E'
 )
 
@@ -16,7 +16,7 @@ export default function Login() {
       supabase.auth.getSession().then(({ data: { session } }) => {
         setSession(session)
       })
-
+      console.log(session)
       const {
         data: { subscription },
       } = supabase.auth.onAuthStateChange((_event, session) => {
