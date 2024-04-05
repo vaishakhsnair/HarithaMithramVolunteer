@@ -1,10 +1,11 @@
 import { supabase } from '../../components/supabaseClient'
 import { useState, useEffect } from 'react'
 import LangaugeSelect from '../Language/page';
+import UserProfile from '../User/UserProfile';
 
 
 export default function Home() {
-    const isLoggedIn = true;
+    const isLoggedIn = false;
     const [session, setSession] = useState(null)
 
     useEffect(() => {
@@ -26,7 +27,7 @@ export default function Home() {
       <>
       {isLoggedIn? (
       <div>
-        <LangaugeSelect />
+        <UserProfile />
       </div>):(<>
         <div className='flex flex-col items-center justify-center min-w-screen min-h-screen 
                         bg-image bg-no-repeat bg-cover 
@@ -34,7 +35,10 @@ export default function Home() {
       <div className='flex items-center justify-center 
                         min-w-[90vw] rounded-xl min-h-20 bg-[#E3F4E1] gap-10 text-center
                         text-xl cursor-pointer  '>
-                Home
+                <button type='button' onClick={async ()=>{
+                    const { error } = await supabase.auth.signOut();
+                    console.log(error)
+                }} >LogOut</button>
       </div>
         </div>
       </>)}
