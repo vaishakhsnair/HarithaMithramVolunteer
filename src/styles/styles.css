@@ -1,0 +1,38 @@
+@tailwind components;
+@tailwind utilities;
+@tailwind base;
+
+
+.lng-dsg-cirle{
+    display: none;
+    width: 20rem;
+    height: 20rem;
+    border-radius: 50%;
+    background: lightgreen;
+    position:relative;
+    z-index: 1;
+    opacity: .5;
+}
+.lng-dsg-cirle:nth-child(1){
+    width: 40rem;
+    height: 40rem;
+    transform: translate(20%,50%);
+}
+.lng-dsg-cirle:nth-child(2){
+    display: none;
+    transform: translate(60%,-35%);
+}
+.lng-dsg-cirle:nth-child(3){
+
+    transform: translate(60%,180%);
+}
+.lng-dsg-cirle:nth-child(4){
+    display: none;
+    transform: translate(60%,50%);
+}
+.blue_circle{
+    width: 50%;
+    height: 50%;
+    position: absolute;
+    translate: 0% -50%;
+}

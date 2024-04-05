@@ -11,9 +11,9 @@ export default function Login() {
     useEffect(() => {
       supabase.auth.getSession().then(({ data: { session } }) => {
         setSession(session)
+        console.log('Login Page')
         console.log(session)
       })
-
       const {
         data: { subscription },
       } = supabase.auth.onAuthStateChange((_event, session) => {

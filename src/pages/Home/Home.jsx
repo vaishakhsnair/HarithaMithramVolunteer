@@ -1,17 +1,19 @@
 import { supabase } from '../../components/supabaseClient'
 import { useState, useEffect } from 'react'
+import UserProfile from '../User/UserProfile';
+import NewUser from '../User/NewUser';
 
 import '../../components/background.css'
 
 
 
 export default function Home() {
+    const isLoggedIn = true;
     const [session, setSession] = useState(null)
 
     useEffect(() => {
       supabase.auth.getSession().then(({ data: { session } }) => {
         setSession(session)
-        console.log(session)
       })
   
       const {
@@ -53,10 +55,8 @@ export default function Home() {
            </div>
           <div className='relative w-full h-full'>
             <img src='/kswmp.png' className='relative w-screen  z-10'></img>
-          </div>
-
-            
-
+          </div>        
         </div>
+
     )
 }
