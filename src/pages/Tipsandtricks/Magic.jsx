@@ -27,7 +27,7 @@ const Magic = () => {
     <section className='w-screen h-screen flex flex-col items-center justify-start p-4 '>
       <div>Magic</div>
       <div className='flex flex-col gap-2'>
-        <Newsblock title='Tips & Tricks by Varun Haridas Presents Udaiypu tips' desc='Varun Haridas Presents Udaiypu tips' />
+        <Newsblock title='Tips & Tricks by Varun Haridas Presents Amazing tips' desc='Varun Haridas Presents Udaiypu tips' />
       </div>
       <Navbar />
     </section>
