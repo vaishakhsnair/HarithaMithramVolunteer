@@ -1,12 +1,10 @@
 import { supabase } from '../../components/supabaseClient'
 import { useState, useEffect } from 'react'
-import UserProfile from '../User/NewUser';
 import NewUser from '../User/NewUser';
 import { RxHamburgerMenu } from "react-icons/rx";
 import '../../components/background.css'
 import Navbar from '../../components/Navbar';
 import { Link } from 'react-router-dom';
-
 import CreatePost from '../Posts/CreatePost';
 
 
