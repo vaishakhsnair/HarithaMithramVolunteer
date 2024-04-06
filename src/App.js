@@ -10,7 +10,7 @@ import Home from './pages/Home/Home';
 import QrScanner from './pages/QrScanner/QrScanner';
 import CreatePost from './pages/Posts/CreatePost';
 import UserProfile from './pages/User/Profile/UserProfile';
-
+import Magic from './pages/Tipsandtricks/Magic';
 
 function checkExistingUser(user) {
   supabase
@@ -75,6 +75,7 @@ function App() {
       <Route path="/qrscan" element={session ? <QrScanner />: <Login />} />
       <Route path="/posts" element={session? <CreatePost /> : <Login />} />
       <Route path="/profile" element={session? <UserProfile /> : <Login />} />
+      <Route path="/tips" element={session? <Magic /> : <Login /> } />
     </Routes>
   </Router>
   );

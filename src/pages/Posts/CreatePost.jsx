@@ -1,13 +1,16 @@
 import React from 'react'
 import { AiOutlineArrowLeft, AiOutlineDoubleRight } from 'react-icons/ai'
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
+import { supabase } from '../../components/supabaseClient';
 import { useNavigate } from 'react-router-dom'
 import '../../styles/styles.css'
+import { data } from 'autoprefixer';
 
 const CreatePost = () => {
     const [region,setRegion] = useState(null);
     const [overlay,setOverlay] = useState(false)
+    const [regionResult,setRegionResult] = useState('')
     const navigate = useNavigate();
     const selectRegion = ({regionCode}) => {
         setRegion(regionCode)   
@@ -24,12 +27,12 @@ const CreatePost = () => {
     const CloseNextSection = () =>{
         setOverlay(false)
     }
-    const UserCard = () => {
+    const UserCard = (user) => {
         return(
             <div className='w-5/6 py-2 bg-white flex items-center justify-start '>
                 <div className='w-12 h-12 rounded-full bg-black border-2 border-green-500'></div>
                     <div className='w-1/2 py-2 ml-6 max-w-full'>
-                        <p>Person</p>
+                        <p aria-placeholder='name'>{user.username}</p>
                 </div>
             </div>
         )
@@ -41,12 +44,36 @@ const CreatePost = () => {
                 onClick={() => {
                     selectRegion({regionCode});
                     NextSection();
+                    fetchRegionUsers({regionCode})
                 }}
            >
                 {regionCode}
              </button>
         )
     }   
+    async function fetchRegionUsers(region){
+
+        try {
+            if(sessionExists){
+                console.log("fetching regional memebers")
+
+                console.log('Fetcing Session')
+                console.log(regionResult)
+            }
+            
+        } catch (error) {
+            console.log(error)
+        }
+
+    };
+    const [sessionExists,SetExistingSession] = useState(null);
+    useEffect(()=>{
+            supabase.auth.getSession().then(({data:session})=>{
+                SetExistingSession(session)
+                console.log(session)
+            })        
+        },[])
+        
 
   return (
     <section className='w-screen h-screen flex flex-col overflow-hidden'>
@@ -65,12 +92,12 @@ const CreatePost = () => {
                 </span>
             </div>
             <div className='flex flex-col w-11/12 mt-14 h-auto items-center gap-4 '>
-                {regionDirect({regionCode:'Asia',value:'asia',url:'/posts/Asia'})}
-                {regionDirect({regionCode:'Europe',url:'/posts/Europe'})}
-                {regionDirect({regionCode:'Africa',url:'/posts/Africa'})}
-                {regionDirect({regionCode:'North America',url:'/posts/NorthAmerica'})}
-                {regionDirect({regionCode:'South America',url:'/posts/SouthAmerica'})}
-                {regionDirect({regionCode:'Australia',url:'/posts/Australia'})}
+                {regionDirect({regionCode:'R1',value:'asia',url:'/posts/Asia'})}
+                {regionDirect({regionCode:'R1',url:'/posts/Europe'})}
+                {regionDirect({regionCode:'R3',url:'/posts/Africa'})}
+                {regionDirect({regionCode:'R4',url:'/posts/NorthAmerica'})}
+                {regionDirect({regionCode:'R5',url:'/posts/SouthAmerica'})}
+                {regionDirect({regionCode:'R6',url:'/posts/Australia'})}
             </div>
             {overlay && <div className='w-full h-screen bg-white absolute'>
                     <section className='relative w-full h-full'>
@@ -84,10 +111,7 @@ const CreatePost = () => {
                     </span>
                     </div>
                      <div className='flex flex-col items-center gap-2 justify-center mt-8'>
-                        <UserCard />
-                        <UserCard />
-                        <UserCard />
-                        <UserCard /> 
+                        <UserCard user={data}/>
                      </div>
                      <div className='absolute position-proceed rounded-full flex items-center justify-center overflow-hidden
                      z-30'>
@@ -105,4 +129,5 @@ const CreatePost = () => {
   )
 }
 
-export default CreatePost
+
+export default CreatePost;
