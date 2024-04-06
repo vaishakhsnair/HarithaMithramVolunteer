@@ -1,12 +1,10 @@
 import { supabase } from '../../components/supabaseClient'
 import { useState, useEffect } from 'react'
-import UserProfile from '../User/UserProfile';
 import NewUser from '../User/NewUser';
 import { RxHamburgerMenu } from "react-icons/rx";
 import '../../components/background.css'
 import Navbar from '../../components/Navbar';
 import { Link } from 'react-router-dom';
-
 import CreatePost from '../Posts/CreatePost';
 
 
@@ -73,7 +71,7 @@ export default function Home() {
 
   const KeyMap = [
     {title:'Pickup Request',image: 'pickup.png',url:'/pickup'},
-    {title:'Send Announcement',image: 'announce.png',url:'/announcement'},
+    {title:'Send Announcement',image: 'announce.png',url:'/posts'},
     {title:'Complaints Recieved',image:'complaints.png', url:'/complaints'},
     {title:'QR Scanner',image:'qrscan.png',url:'/qrscan'},
     {title:'Missed Pickup',image: 'mail.svg',url:'/missedpickup'},
