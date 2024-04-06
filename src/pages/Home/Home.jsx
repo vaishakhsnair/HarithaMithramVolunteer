@@ -1,6 +1,6 @@
 import { supabase } from '../../components/supabaseClient'
 import { useState, useEffect } from 'react'
-import UserProfile from '../User/UserProfile';
+import UserProfile from '../User/NewUser';
 import NewUser from '../User/NewUser';
 import { RxHamburgerMenu } from "react-icons/rx";
 import '../../components/background.css'
@@ -14,7 +14,7 @@ import CreatePost from '../Posts/CreatePost';
 export default function Home() {
   const isLoggedIn = true;
   const [session, setSession] = useState(null)
-  const [existingUser, setExistingUser] = useState(false)
+  const [existingUser, setExistingUser] = useState(true)
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -73,7 +73,7 @@ export default function Home() {
 
   const KeyMap = [
     {title:'Pickup Request',image: 'pickup.png',url:'/pickup'},
-    {title:'Send Announcement',image: 'announce.png',url:'/announcement'},
+    {title:'Send Announcement',image: 'announce.png',url:'/posts'},
     {title:'Complaints Recieved',image:'complaints.png', url:'/complaints'},
     {title:'QR Scanner',image:'qrscan.png',url:'/qrscan'},
     {title:'Missed Pickup',image: 'mail.svg',url:'/missedpickup'},

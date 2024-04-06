@@ -1,3 +1,11 @@
 .input-new-user{
     margin: 20px;
 }
+.blue_circle{
+    width: 50%;
+    height: 50%;
+    background-color: lightgreen;
+    opacity: .5;
+    position: absolute;
+    translate: 0% -50%;
+}
