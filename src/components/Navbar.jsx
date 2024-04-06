@@ -4,7 +4,7 @@ import { MdOutlinePersonOutline } from "react-icons/md";
 
 const Navbar = () => {
     return(
-        <div className="w-screen py-2 flex gap-8 absolute bottom-0 h-[8vh] bg-white rounded-t-3xl justify-center">
+        <div className="w-screen py-2 flex gap-8 bottom-0 h-[8vh] bg-white rounded-t-3xl fixed justify-center">
             <Link to={'/'} >
                 <BiHomeAlt2 size={48} className='mx-4'/>
             </Link>
