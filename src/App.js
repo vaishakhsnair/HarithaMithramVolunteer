@@ -12,7 +12,7 @@ import Calendar from './pages/Calendar/Calendar';
 import CreatePost from './pages/Posts/CreatePost';
 import UserProfile from './pages/User/Profile/UserProfile';
 import Magic from './pages/Tipsandtricks/Magic';
-
+import PickUpPoint from './pages/Pickup/PickupPoint';
 function checkExistingUser(user) {
   supabase
     .from('users')
@@ -78,6 +78,7 @@ function App() {
       <Route path="/posts" element={session? <CreatePost /> : <Login />} />
       <Route path="/profile" element={session? <UserProfile /> : <Login />} />
       <Route path="/tips" element={session? <Magic /> : <Login /> } />
+      <Route path="/pickup" element={session? <PickUpPoint /> : <Login /> } />
     </Routes>
   </Router>
   );

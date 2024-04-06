@@ -1,7 +1,6 @@
-import React from 'react'
 import { AiOutlineArrowLeft, AiOutlineDoubleRight } from 'react-icons/ai'
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { useState,useEffect } from 'react'
+import { useState,useEffect ,React } from 'react'
 import { supabase } from '../../components/supabaseClient';
 import { useNavigate } from 'react-router-dom'
 import '../../styles/styles.css'
