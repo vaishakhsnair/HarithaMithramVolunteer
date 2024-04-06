@@ -30,9 +30,10 @@
     display: none;
     transform: translate(60%,50%);
 }
-.blue_circle{
-    width: 50%;
-    height: 50%;
+.position-proceed{
     position: absolute;
-    translate: 0% -50%;
+    top: 87%;
+    left: 87%;
+    transform: translate(-50%,-50%);
+
 }

@@ -17,7 +17,7 @@ const Navbar = () => {
                 <BiCalendar size={48} className='mx-4'/>
             </Link>
 
-            <Link to={'/profile'} >
+            <Link to={'/profile'}  >
                 <MdOutlinePersonOutline size={48} className='mx-4'/>    
             </Link>
 
