@@ -4,7 +4,7 @@ import Navbar from '../../components/Navbar'
 const Magic = () => {
   const Newsblock = ({title = 'adaf',desc='afkanf'}) =>{
     return (
-      <div className='w-screen flex flex-col py-2 border-2 border-green-300 items-center justify-center '>
+      <div className='w-screen flex flex-col py-2 border-2 overflow-hidden border-green-300 items-center justify-center '>
         <div className='w-full h-48 object-fill rounded-tl-lg rounded-tr-lg overflow-hidden'>
             <img src="senset.webp" loading='lazy' alt="sunset" />
         </div>
