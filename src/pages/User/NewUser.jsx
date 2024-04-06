@@ -17,6 +17,8 @@ const NewUser = () => {
     }, [])
 
 
+
+    
    const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData)
@@ -38,8 +40,8 @@ const NewUser = () => {
 
 }
   return (
-    <section className='bg-white w-screen h-screen overflow-hidden'>
-        <form className='flex flex-col w-full h-full p-4 border-2 items-center text-center justify-center border-slate-900 gap-4'
+    <section className='bg-white min-w-screen min-h-screen overflow-hidden mt-[5vh] '>
+        <form className='flex flex-col w-full h-full px-2 items-center text-center justify-center border-slate-900 gap-[2vh]'
             onSubmit={handleSubmit}
         >
             <div className='w-full flex flex-start'>
@@ -47,7 +49,7 @@ const NewUser = () => {
             </div>
            <div className='flex flex-col gap-2 items-start'>
                 <h1 className='font-bold text-2xl'>Fill Your Profile</h1>
-                <p>Dont Worry,you can always change it later</p>
+                <p>Please Enter your details to finish sign-up</p>
            </div>
            <BiUserCircle className='w-48 h-48' />
             <label htmlFor='fullname' className='w-full h-auto'>
