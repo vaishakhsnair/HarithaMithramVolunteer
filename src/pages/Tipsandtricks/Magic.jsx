@@ -1,4 +1,5 @@
 import React from 'react'
+import Navbar from '../../components/Navbar'
 
 const Magic = () => {
   const Newsblock = ({title = 'adaf',desc='afkanf'}) =>{
@@ -28,6 +29,7 @@ const Magic = () => {
       <div className='flex flex-col gap-2'>
         <Newsblock title='Tips & Tricks by Varun Haridas Presents Udaiypu tips' desc='Varun Haridas Presents Udaiypu tips' />
       </div>
+      <Navbar />
     </section>
   )
 }
