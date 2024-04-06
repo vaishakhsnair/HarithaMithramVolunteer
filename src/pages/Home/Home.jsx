@@ -14,7 +14,7 @@ import CreatePost from '../Posts/CreatePost';
 export default function Home() {
   const isLoggedIn = true;
   const [session, setSession] = useState(null)
-  const [existingUser, setExistingUser] = useState(false)
+  const [existingUser, setExistingUser] = useState(true)
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
