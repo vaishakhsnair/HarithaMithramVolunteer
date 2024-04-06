@@ -1,7 +1,8 @@
 import React from 'react'
-import { AiOutlineArrowLeft } from 'react-icons/ai'
+import { AiOutlineArrowLeft, AiOutlineDoubleRight } from 'react-icons/ai'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import '../../styles/styles.css'
 
 const CreatePost = () => {
     const [region,setRegion] = useState(null);
@@ -22,17 +23,29 @@ const CreatePost = () => {
     const CloseNextSection = () =>{
         setOverlay(false)
     }
-    const regionDirect = ({regionCode,url}) =>{
+    const UserCard = () => {
+        return(
+            <div className='w-5/6 py-2 bg-white flex items-center justify-start '>
+                <div className='w-12 h-12 rounded-full bg-black border-2 border-green-500'></div>
+                    <div className='w-1/2 py-2 ml-6 max-w-full'>
+                        <p>Person</p>
+                </div>
+            </div>
+        )
+    }
+    const regionDirect = ({regionCode}) =>{
         return(
             <button 
                 className='w-full h-auto py-3 text-[#005C29] bg-[#005C29]/[.20] text-center font-semibold text-2xl rounded-lg hover:bg-[#005C]/[.30] hover:text-white'
-                onClick={()=>(selectRegion({regionCode}),NextSection())}
+                onClick={() => {
+                    selectRegion({regionCode});
+                    NextSection();
+                }}
            >
                 {regionCode}
              </button>
         )
-    }
-
+    }   
 
   return (
     <section className='w-screen h-screen flex flex-col overflow-hidden'>
@@ -41,7 +54,11 @@ const CreatePost = () => {
         </div>
         <div className='z-10 absolute w-full h-full items-center flex flex-col'>
             <div className='w-full p-3 max-h-48 h-12 flex gap-12 mt-12 justify-start items-center'>
-                <AiOutlineArrowLeft className='w-12 h-12' />
+                <button type='button' className='rounded-xl p-2' onClick={()=>(
+                    navigate(-1)
+                )}>
+                    <AiOutlineArrowLeft className='w-12 h-12' />
+                </button>
                 <span className='font-semibold text-[#005C2]/[.95] text-4xl'>
                     Locations
                 </span>
@@ -54,10 +71,36 @@ const CreatePost = () => {
                 {regionDirect({regionCode:'South America',url:'/posts/SouthAmerica'})}
                 {regionDirect({regionCode:'Australia',url:'/posts/Australia'})}
             </div>
-            {overlay && <div className='w-full h-screen bg-red-900 absolute'>
-                     <p className=' flex items-center justify-center text-white'>Overlay</p>
-                     <button type='button' className='border-2 border-white rounded-xl p-4' onClick={()=>{CloseNextSection()}}>X</button>
-                </div>}
+            {overlay && <div className='w-full h-screen bg-white absolute'>
+                    <section className='relative w-full h-full'>
+                    <div className='w-full p-3 max-h-48 h-12 flex gap-12 mt-12 justify-start items-center'>
+                    <button type='button' className='border-2 border-white rounded-xl p-4' onClick={()=>{CloseNextSection()}}>
+                        <AiOutlineArrowLeft className='w-12 h-12' />
+        
+                    </button>
+                    <span className='font-semibold text-[#005C2]/[.95] text-4xl'>
+                        Regions
+                    </span>
+                    </div>
+                     <div className='flex flex-col items-center gap-2 justify-center mt-8'>
+                        <UserCard />
+                        <UserCard />
+                        <UserCard />
+                        <UserCard />
+                     </div>
+                     <div className='absolute position-proceed flex items-center justify-center'>
+                        <button type='button' 
+                            className='btn-proceed-animtn relative rounded-full p-2 flex items-center justify-center bg-[#8a18e7] w-12 h-12'
+                            onClick={()=>(
+                                navigate('./Publishpost.jsx')
+                            )}
+                            >
+                                <AiOutlineDoubleRight className='w-12 h-12' />
+                        </button>
+                     </div>
+                    </section>
+                </div>
+            }
         </div>
     </section>
   )

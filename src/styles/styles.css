@@ -36,3 +36,21 @@
     position: absolute;
     translate: 0% -50%;
 }
+.position-proceed{
+    position: absolute;
+    top: 85%;
+    left: 85%;
+    transform: translate(-50%,-50%);
+    transition: background 100ms ease-in-out;
+    
+}
+.btn-proceed-animtn{
+    color: white;
+}
+.btn-proceed-animtn:hover{
+    cursor: pointer;
+    color: #0a8b87;
+    background: #13ecd5;
+
+
+}
