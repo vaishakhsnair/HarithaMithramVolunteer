@@ -8,11 +8,13 @@ import './App.css';
 import Login from './pages/Login/Login';
 import Home from './pages/Home/Home';
 import QrScanner from './pages/QrScanner/QrScanner';
+import QrResult from './pages/QrScanner/QrResult';
 import Calendar from './pages/Calendar/Calendar';
 import CreatePost from './pages/Posts/CreatePost';
 import UserProfile from './pages/User/Profile/UserProfile';
 import Magic from './pages/Tipsandtricks/Magic';
 import PickUpPoint from './pages/Pickup/PickupPoint';
+
 function checkExistingUser(user) {
   supabase
     .from('users')
@@ -74,6 +76,7 @@ function App() {
     <Routes>
       <Route path="/" element={session ? <Home />: <Login />} />
       <Route path="/qrscan" element={session ? <QrScanner />: <Login />} />
+      <Route path="/qrscan/result" element={session ? <QrResult />: <Login />} />
       <Route path="/calendar" element={session ? <Calendar />: <Login />} />
       <Route path="/posts" element={session? <CreatePost /> : <Login />} />
       <Route path="/profile" element={session? <UserProfile /> : <Login />} />
